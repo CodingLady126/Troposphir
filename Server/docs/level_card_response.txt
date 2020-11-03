@@ -1,0 +1,45 @@
+ct:     created time
+gms:    can play solo
+gmm:    can host coop
+gff:    find finish flag
+gsv:    survive time limit
+gbs:    beat the score
+gde:    defeat the enemies
+gdb:    defeat the bosses
+gctf:   can host ctf
+gab:    can host atmoball
+gra:    can host race
+gco:    can host free combat
+gtc:    can host team combat
+gmmp1:  min coop players
+gmmp2:  max coop players
+gmcp1:  min comp players
+gmcp2:  max comp players
+gmcdt:  default comp time
+gmcff:  friendly fire enabled
+ast:    abilities state
+aal:    allowed abilities
+ghosts: 
+ipad:   level works on ipad
+dcap:   capacity points
+dmic:   map items count
+denc:   enemies count
+dpuc:   power ups count
+dcoc:   collectibles count
+dtrc:   treasures count
+damc:   ammo count
+dphc:   physic items count
+ddoc:   doors count
+dkec:   keys count
+dgcc:   gravity changers count
+dmvc:   moving platforms count
+dsbc:   skyboxes count
+dhzc:   hazards count
+dmuc:   music tems count
+dtmi:   top map item
+ddtm:   design time
+dttm:   test time
+dedc:   edit count
+dtsc:   test count
+dopc:   operation count
+dpoc:   paste operation count

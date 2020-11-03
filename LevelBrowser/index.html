@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<title>OneMoreBlock + Troposphir</title>
+		<meta charset="utf8">
+		<script src="//underscorejs.org/underscore-min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.5/angular.min.js"></script>
+		<script src="//code.angularjs.org/1.2.16/angular-route.min.js"></script>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="js/controllers.js"></script>
+	</head>
+	<body ng-app="troposphir" ng-controller="navigation">
+		<header class="gigantic">
+			<img src="http://onemoreblock.com/1Oy.png" />
+		</header>
+		<menu class="gigantic">
+			<button ng-click="changePage('browser')">Level Browser</button>
+			<button ng-click="changePage('http://onemoreblock.com/blog/')">Blog</button>
+			<button ng-click="changePage('http://onemoreblock.com/forum/')">Community</button>
+		</menu>
+		<section id="content" class="clearfix">
+			<div ng-controller="levelBrowser" ng-show="page=='browser'">
+				<h1 class="sectionHeader">Level Browser</h1>
+				<aside id="filters">
+					<section>
+						<h1>Search</h1>
+						<search-filter type="text" group="search" name="name" update="doSearch()" placeholder="Level name"></search-filter>
+						<search-filter type="text" group="search" name="author" update="doSearch()" placeholder="Author username"></search-filter>
+						<p class="note">To mark a attribute as irrelevant, right-click it.</p>
+						<search-filter type="checkbox" group="search" name="xp.level" update="doSearch()">XP Levels</search-filter>
+						<search-filter type="checkbox" group="search" name="is.lotd" update="doSearch()">LOTDs</search-filter>
+					</section>
+				</aside>
+				<section id="levelList">
+					<article ng-repeat="level in levels | filter:search.query" ng-class="level.expanded && 'tall'" ng-click="changePage('level/'+level.id)">
+						<div class="thumbnail" style="background-image: url({{level.screenshot}})">
+							<div class="levelInfo">
+								<h1>{{level.name}}</h1> <h2>by {{level.author}}</h2> <h3>{{level.playCount}} plays</h3><br>
+								<div class="rating small">
+									<div class="rating-fill small" style="width: {{level.ratingPercent}}%;"></div>
+								</div>
+								<div class="difficulty small">
+									<div class="difficulty-fill small"style="width: {{level.difficultyPercent}}%;"></div>
+								</div>
+							</div>
+						</div>
+					</article>
+				</section>
+			</div>
+			<div id="levelCard" ng-controller="levelCard" ng-show="page == 'level'">
+				<h1 class="sectionHeader"></h1>
+				<div class="info clearfix">
+					<img class="levelImage" ng-src="{{level.screenshot}}" />
+					<h1>{{level.name}}</h1> <h2>by {{level.author}}</h2> <br>
+					<h3>{{level.playCount}} plays</h3> <br>
+					<div class="rating">
+						<div class="rating-fill" style="width: {{level.ratingPercent}}%;"></div>
+					</div><br>
+					<div class="difficulty">
+						<div class="difficulty-fill"style=" width: {{level.difficultyPercent}}%;"></div>
+					</div><br>
+					{{level.description}}
+				</div>
+				<div class="community clearfix">
+					<div class="comments">
+						<article class="comment" ng-repeat="comment in comments">
+							<h1>{{comment.user}}</h1>
+							<p>{{comment.body}}</p>
+						</article>
+						<span ng-if="!comments.length">No comments</span>
+					</div>
+					<aside class="leaderboards">
+						<h1>Leaderboard</h1>
+						<div class="score-entry" ng-repeat="score in scores | reverse">
+							<span class="score-ranking">{{score.ranking}}</span>. {{score.user}} <span class="score-value">{{score.value}}</span>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

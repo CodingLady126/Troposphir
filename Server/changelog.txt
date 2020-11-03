@@ -1,0 +1,8 @@
+26/01/2014:
+ * New launcher backend, very slim
+ * Increased launcher window size We're already out of the 800x600 era!
+01/01/2014:
+ * Leaderboards beta
+ * Launcher compatiility beta
+^Some Day: 
+ * Secret stuff
